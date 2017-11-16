@@ -1,7 +1,8 @@
 # How to create your own Python workbench
 
 ## Description
-You can create your own FreeCAD [workbench](https://www.freecadweb.org/wiki/Workbenches)
+You can create your own FreeCAD [workbench](https://www.freecadweb.org/wiki/Workbenches).
+
 In this tutorial you will learn how to create a very simple workbench using [python script commands](https://www.freecadweb.org/wiki/Introduction_to_Python) and making the interface with [PySide](https://www.freecadweb.org/wiki/PySide).
 
 ## Introduction
@@ -80,11 +81,11 @@ class Basic1Workbench (Workbench):
     "+	c #000000",
     "@	c #7F4F00",
     "#	c #FFBF00",
+    "................",
     "...++++++++++++.",
     "..+@#########++.",
     ".+@#########+@+.",
     ".+++++++++++@#+.",
-    ".+#########+##+.",
     ".+#########+##+.",
     ".+###++####+##+.",
     ".+####+####+##+.",
@@ -92,10 +93,10 @@ class Basic1Workbench (Workbench):
     ".+####+####+##+.",
     ".+####+####+##+.",
     ".+####+####+##+.",
-    ".+###+++###+##+.",
-    ".+#########+#@+.",
+    ".+###+++###+#@+.",
     ".+#########+@+..",
-    ".++++++++++++..."};
+    ".++++++++++++...",
+    "................"};
     """
 
     MenuText = "Basic1"
@@ -109,9 +110,9 @@ class Basic1Workbench (Workbench):
         # list of commands, only one (it is in the imported Basic1Gui):
         cmdlist = [ "Basic1_MakeBox"]
         self.appendToolbar(
-            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "cmdlist")), cmdlist)
+            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "Basic1")), cmdlist)
         self.appendMenu(
-            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "cmdlist")), cmdlist)
+            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "Basic1")), cmdlist)
 
         Log ('Loading Basic1 module... done\n')
 
@@ -142,7 +143,7 @@ These are the files>
 + [b1_wb.xpm](imgs/b1_wb.xpm)
 
 ```python
-    # this is the icon in XPM format 16x16 pixels
+    # this is the icon in XPM format 16x16 pixels 
     Icon = """
     /* XPM */
     static char * basic1_xpm[] = {
@@ -152,11 +153,11 @@ These are the files>
     "+	c #000000",
     "@	c #7F4F00",
     "#	c #FFBF00",
+    "................",
     "...++++++++++++.",
     "..+@#########++.",
     ".+@#########+@+.",
     ".+++++++++++@#+.",
-    ".+#########+##+.",
     ".+#########+##+.",
     ".+###++####+##+.",
     ".+####+####+##+.",
@@ -164,10 +165,10 @@ These are the files>
     ".+####+####+##+.",
     ".+####+####+##+.",
     ".+####+####+##+.",
-    ".+###+++###+##+.",
-    ".+#########+#@+.",
+    ".+###+++###+#@+.",
     ".+#########+@+..",
-    ".++++++++++++..."};
+    ".++++++++++++...",
+    "................"};
     """
 ```
 
@@ -190,10 +191,11 @@ Basic1Gui.py is imported because the command Basic1_MakeBox is defined there
         # list of commands, only one (it is in the imported Basic1Gui):
         cmdlist = [ "Basic1_MakeBox"]
         self.appendToolbar(
-            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "cmdlist")), cmdlist)
+            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "Basic1")), cmdlist)
         self.appendMenu(
-            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "cmdlist")), cmdlist)
+            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "Basic1")), cmdlist)
 
+        #FreeCADGui.addIconPath(":/icons")
         Log ('Loading Basic1 module... done\n')
 ```
 
@@ -236,11 +238,11 @@ class _MakeBoxCmd:
     def GetResources(self):
         # icon and command information
         MenuText = QtCore.QT_TRANSLATE_NOOP(
-            'Basic1_MakeBox',
-            'Create a new box')
+            'Basic1_Box',
+            'Box')
         ToolTip = QtCore.QT_TRANSLATE_NOOP(
-            'Basic1_MakeBox',
-            'Create a new box')
+            'Basic1_Box',
+            'Creates a new box')
         return {
             'Pixmap': __dir__ + '/icons/basic1_makebox_cmd.svg',
             'MenuText': MenuText,
@@ -282,11 +284,11 @@ class _MakeBoxCmd:
     def GetResources(self):
         # icon and command information
         MenuText = QtCore.QT_TRANSLATE_NOOP(
-            'Basic1_MakeBox',
-            'Create a new box')
+            'Basic1_Box',
+            'Box')
         ToolTip = QtCore.QT_TRANSLATE_NOOP(
-            'Basic1_MakeBox',
-            'Create a new box')
+            'Basic1_Box',
+            'Creates a new box')
         return {
             'Pixmap': __dir__ + '/icons/basic1_makebox_cmd.svg',
             'MenuText': MenuText,

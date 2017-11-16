@@ -38,11 +38,11 @@ class Basic1Workbench (Workbench):
     "+	c #000000",
     "@	c #7F4F00",
     "#	c #FFBF00",
+    "................",
     "...++++++++++++.",
     "..+@#########++.",
     ".+@#########+@+.",
     ".+++++++++++@#+.",
-    ".+#########+##+.",
     ".+#########+##+.",
     ".+###++####+##+.",
     ".+####+####+##+.",
@@ -50,10 +50,10 @@ class Basic1Workbench (Workbench):
     ".+####+####+##+.",
     ".+####+####+##+.",
     ".+####+####+##+.",
-    ".+###+++###+##+.",
-    ".+#########+#@+.",
+    ".+###+++###+#@+.",
     ".+#########+@+..",
-    ".++++++++++++..."};
+    ".++++++++++++...",
+    "................"};
     """
 
     MenuText = "Basic1"
@@ -67,9 +67,9 @@ class Basic1Workbench (Workbench):
         # list of commands, only one (it is in the imported Basic1Gui):
         cmdlist = [ "Basic1_MakeBox"]
         self.appendToolbar(
-            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "cmdlist")), cmdlist)
+            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "Basic1")), cmdlist)
         self.appendMenu(
-            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "cmdlist")), cmdlist)
+            str(QtCore.QT_TRANSLATE_NOOP("Basic1", "Basic1")), cmdlist)
 
         #FreeCADGui.addIconPath(":/icons")
         Log ('Loading Basic1 module... done\n')

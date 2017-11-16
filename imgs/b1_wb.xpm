@@ -1,16 +1,16 @@
 /* XPM */
-static char * F:\urjc\proyectos\cad\py_freecad\tutorial_freecad_wb\basic1_wb\icons\b1b_wb_xpm[] = {
+static char * C:\Users\felipe\urjc\proyectos\cad\py_freecad\tutorial_freecad_wb\imgs\b1_wb_2_xpm[] = {
 "16 16 5 1",
 " 	c None",
 ".	c #FFFFFF",
 "+	c #000000",
 "@	c #7F4F00",
 "#	c #FFBF00",
+"................",
 "...++++++++++++.",
 "..+@#########++.",
 ".+@#########+@+.",
 ".+++++++++++@#+.",
-".+#########+##+.",
 ".+#########+##+.",
 ".+###++####+##+.",
 ".+####+####+##+.",
@@ -18,7 +18,7 @@ static char * F:\urjc\proyectos\cad\py_freecad\tutorial_freecad_wb\basic1_wb\ico
 ".+####+####+##+.",
 ".+####+####+##+.",
 ".+####+####+##+.",
-".+###+++###+##+.",
-".+#########+#@+.",
+".+###+++###+#@+.",
 ".+#########+@+..",
-".++++++++++++..."};
+".++++++++++++...",
+"................"};

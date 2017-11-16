@@ -53,11 +53,11 @@ class _MakeBoxCmd:
     def GetResources(self):
         # icon and command information
         MenuText = QtCore.QT_TRANSLATE_NOOP(
-            'Basic1_MakeBox',
-            'Create a new box')
+            'Basic1_Box',
+            'Box')
         ToolTip = QtCore.QT_TRANSLATE_NOOP(
-            'Basic1_MakeBox',
-            'Create a new box')
+            'Basic1_Box',
+            'Creates a new box')
         return {
             'Pixmap': __dir__ + '/icons/basic1_makebox_cmd.svg',
             'MenuText': MenuText,
