@@ -1,4 +1,4 @@
-# How to create your own Python workbench
+# How to create your own Python workbench in FreeCAD
 
 ## Description
 You can create your own FreeCAD [workbench](https://www.freecadweb.org/wiki/Workbenches).
@@ -23,7 +23,7 @@ This tutorial will lead you through the steps of the creation of a very simple w
 Let us create a very simple workbench with just one command to create a box.
 Obviously, there is no need to create this workbench, since you have the [Part Box](https://www.freecadweb.org/wiki/Part_Box) command availabe in the [Part workbench](https://www.freecadweb.org/wiki/Part_Module)
 
-As explained in the [Workbech creation documentation](https://www.freecadweb.org/wiki/Workbench_creation) we have to create a folder, with any name we like, in the Mod directory.
+As explained in the [Workbech creation documentation](https://www.freecadweb.org/wiki/Workbench_creation), we have to create a folder, with any name we like, in the **Mod** directory.
 
 In this folder we are going to have 3 files:
 + Init.py
@@ -137,8 +137,8 @@ Inside the class, an icon is created. This is the [workbench](https://www.freeca
 
 The icon is in XPM format (https://en.wikipedia.org/wiki/X_PixMap).
 It has 16x16 pixels and you can created it with [gimp](https://www.gimp.org/).
-Then open saved file with a text editor and paste in the InitGui.py file.
-These are the files>
+Then open the saved file with a text editor and paste the image in the InitGui.py file.
+These are the files:
 + [b1_wb.xcf](imgs/b1_wb.xcf)
 + [b1_wb.xpm](imgs/b1_wb.xpm)
 
@@ -172,7 +172,7 @@ These are the files>
     """
 ```
 
-Then the name of the workbench and a description:
+Then, we have the name of the workbench and a description:
 
 ```python
     MenuText = "Basic1"
@@ -270,7 +270,7 @@ def MakeBox():
     box.Height = 1
 ```
 
-Then we have the class for the command and links to the MakeBox funtion:
+Following we have the class for the command and links to the MakeBox funtion:
 
 ```python
 # GUI command that links the Python script
@@ -299,17 +299,42 @@ class _MakeBoxCmd:
         return not FreeCAD.ActiveDocument is None
 ```
 
-There are 3 methods, when we click on the command **Activated** is call, and we just call the MakeBox function.
+There are 3 methods:
+1. Activated
+1. GetResources
+1. IsActive
 
-Then the **GetResources** method indicates the name, information and the icon for the command.
-The icon is a 64x64 svg file [basic1_makebox_cmd.svg](basic1_wb/icons/basic1_makebox_cmd.svg) . You can create it with [inkscape](https://inkscape.org)
+#### Activated
+This method is called when we click on the command icon (see the command icon with a red square following image)
+
+For this example we just call the MakeBox function:
+
+![command icon](imgs/wb_icon_sel_name.png)
+
+
+#### GetResources
+This method indicates the name, information and the icon for the command.
+The icon is a 64x64 svg file [basic1_makebox_cmd.svg](basic1_wb/icons/basic1_makebox_cmd.svg).
+
+You can create this kind of icons with [inkscape](https://inkscape.org)
 
 Check the color code for icons here: https://www.freecadweb.org/wiki/Gui_Command#Icons
 
-The **IsActive** method indicates when the command is active. In our case, it will be active when there is an active document, so we can place the box in it. If not, it will be disabled.
+#### IsActive
+This method indicates the conditions that make the command active.
+In our case, it will be active when there is an active document, so we can place the box in it. If not, it will be disabled.
+
+This is what happens when there is no active file:
+![wb_nofile_icon](imgs/wb_no_file_name.png)
+
+This is what happens once we have opened/created a FreeCAD file:
 
 
-In the last line, the command is added, and the link is made with the name on InitGui and the class in Basic1Gui.py
+![wb_file_icon](imgs/wb_active_name.png)
+
+---
+
+In the last line of Basic1Gui.py, the command is added, and the link is made with the name on InitGui and the class in Basic1Gui.py
 
 ```python
 FreeCADGui.addCommand('Basic1_MakeBox', _MakeBoxCmd())

@@ -71,7 +71,6 @@ class Basic1Workbench (Workbench):
         self.appendMenu(
             str(QtCore.QT_TRANSLATE_NOOP("Basic1", "Basic1")), cmdlist)
 
-        #FreeCADGui.addIconPath(":/icons")
         Log ('Loading Basic1 module... done\n')
 
     def GetClassName(self):
