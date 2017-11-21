@@ -342,7 +342,14 @@ FreeCADGui.addCommand('Basic1_MakeBox', _MakeBoxCmd())
 
 ## File structure
 
-Now we have to copy these files in the FreeCAD Mod folder and we will have our own workbench:
+Now we have to copy these files in your user's FreeCAD Mod folder.
+Your user's FreeCAD folder location is obtained by typing in FreeCAD's python console: 
+
+```python
+FreeCAD.ConfigGet("UserAppData")
+```
+
+By doing this we will have our own very simple workbench:
 
 ```
 Mod/
