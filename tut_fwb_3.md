@@ -71,7 +71,7 @@ The rest of the code is basically the same as in Basic1/InitGui.py as explained 
 
 ### Basic3Gui.py
 
-[Basic2Gui.py](basic2_wb/Basic2Gui.py) defines the 2 commands of our workbench:
+[Basic3Gui.py](basic3_wb/Basic3Gui.py) defines the 3 commands of our workbench:
 1. Basic3_MakeBox:
 1. Basic3_MakeBoxDialog:
 1. Basic3_MakeBoxEdgeP:

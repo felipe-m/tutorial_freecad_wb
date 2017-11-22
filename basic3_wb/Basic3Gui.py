@@ -128,9 +128,10 @@ class _MakeBoxDialogCmd:
 class BoxEdgePTaskPanel:
     def __init__(self,widget):
         self.form = widget
-        self.edgeLabel = QtGui.QLabel("Cube's edge length (mm)")
         # The layout will be horizontal
         layout = QtGui.QHBoxLayout()
+        # Label:
+        self.edgeLabel = QtGui.QLabel("Cube's edge length (mm)")
         # Spin Box that takes doubles
         self.edgeValue = QtGui.QDoubleSpinBox()
         # Default value
