@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-# FreeCAD script for the commands of the basic workbench creation tutorial
-# (c) 2017 Felipe Machado
+# FreeCAD init script of the Basic 2 module,
+# simple workbench, just for the tutorial
 
 #***************************************************************************
 #*   (c) Felipe Machado    https://github.com/felipe-m  2017               *
@@ -25,47 +25,59 @@
 #*                                                                         *
 #***************************************************************************/
 
-import PySide
-from PySide import QtCore, QtGui
-import FreeCAD
-import FreeCADGui
-import Part
-import os
 
-__dir__ = os.path.dirname(__file__)
+class Basic2Workbench (Workbench):
+    """Basic 2 workbench object"""
+    # this is the icon in XPM format 16x16 pixels 
+    Icon = """
+    /* XPM */
+    static char * basic2_xpm[] = {
+    "16 16 8 1",
+    " 	c None",
+    ".	c #FFFFFF",
+    "+	c #000000",
+    "@	c #6D5100",
+    "#	c #FFBF00",
+    "$	c #B88900",
+    "%	c #E5AB00",
+    "&	c #FEBE00",
+    "................",
+    "...++++++++++++.",
+    "..+@#########++.",
+    ".+@#########+@+.",
+    ".+++++++++++@#+.",
+    ".+#########+##+.",
+    ".+##$++$###+##+.",
+    ".+##@%$+###+##+.",
+    ".+####%+###+##+.",
+    ".+###&+%###+##+.",
+    ".+###+$####+##+.",
+    ".+##+@#####+##+.",
+    ".+##++++###+#@+.",
+    ".+#########+@+..",
+    ".++++++++++++...",
+    "................"};
+    """
+    MenuText = "Basic2"
+    ToolTip = "Basic 2 workbench"
 
-# FreeCAD Command made with a Python script
-def MakeBox():
-    doc = FreeCAD.ActiveDocument
-    box =  doc.addObject("Part::Box",'box')
-    box.Length = 1
-    box.Width  = 1
-    box.Height = 1
+    def Initialize(self) :
+        "This function is executed when FreeCAD starts"
+        from PySide import QtCore, QtGui
+        # python file where the commands are:
+        import Basic2Gui
+        # list of commands, just 2 (they are in the imported Basic2Gui):
+        cmdlist = [ "Basic2_MakeBox", "Basic2_MakeBoxDialog"]
+        self.appendToolbar(
+            str(QtCore.QT_TRANSLATE_NOOP("Basic2", "Basic2")), cmdlist)
+        self.appendMenu(
+            str(QtCore.QT_TRANSLATE_NOOP("Basic2", "Basic2")), cmdlist)
 
-# GUI command that links the Python script
-class _MakeBoxCmd:
-    """Command to create a box"""
+        Log ('Loading Basic2 module... done\n')
 
-    
-    def Activated(self):
-        # what is done when the command is clicked
-        MakeBox()
+    def GetClassName(self):
+        return "Gui::PythonWorkbench"
 
-    def GetResources(self):
-        # icon and command information
-        MenuText = QtCore.QT_TRANSLATE_NOOP(
-            'Basic1_Box',
-            'Box')
-        ToolTip = QtCore.QT_TRANSLATE_NOOP(
-            'Basic1_Box',
-            'Creates a new box')
-        return {
-            'Pixmap': __dir__ + '/icons/basic1_makebox_cmd.svg',
-            'MenuText': MenuText,
-            'ToolTip': ToolTip}
+# The workbench is added
+Gui.addWorkbench(Basic2Workbench())
 
-    def IsActive(self):
-        # The command will be active if there is an active document
-        return not FreeCAD.ActiveDocument is None
-
-FreeCADGui.addCommand('Basic1_MakeBox', _MakeBoxCmd())
