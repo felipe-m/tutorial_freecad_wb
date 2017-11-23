@@ -3,7 +3,7 @@
 ## Description
 In the second [tutorial](./tut_fwb_2.md) we learned how to create a dialog for a FreeCAD command Workbench. 
 
-Now we are going to an input box in the dialog to be able to set the length 
+Now we are going to include an input box in the dialog to be able to set the length of the edges we are going to create
 
 Check the [index](./readme.md) for more tutorials
 
@@ -24,7 +24,7 @@ Mod/
 
 ## Dialog with an input box
 
-We are going to add a label and an input box to the dialog to set the cube edge length
+We are going to add a label and an input box to the dialog to set the length of the edges
 
 ### Init.py
 
@@ -34,9 +34,9 @@ The file [Init.py](basic3_wb/Init.py) will be the same as in the previous Workbe
 
 We are going to make modifications to the [InitGui.py](basic3_wb/InitGui.py).
 
-The icon, MenuText and ToolTip are different. Check the file to see what is different.
+The icon, MenuText and ToolTip are different. Check the source file to see what is different.
 
-For this workbench, the Initialize function will have 3 commands:
+For this workbench, the **Initialize** function will have 3 commands:
 - Basic3_MakeBox
 - Basic3_MakeBoxDialog
 - Basic3_MakeBoxEdgeP
@@ -44,9 +44,7 @@ For this workbench, the Initialize function will have 3 commands:
 Basic3_MakeBox and Basic3_MakeBoxDialog are the same as in Basic2 (only the name has been changed)
 
 Basic3_MakeBoxEdgeP is the new command that we are introducing.
-
-We are only going to review the main difference in the Initialize method.
-This difference is that now **cmdlist** has 3 elements, which are the 3 commands that our workbench will have.
+So now we have to update **cmdlist** to have 3 elements, which are the 3 commands that our workbench will have.
 
 ```python
 
@@ -72,11 +70,11 @@ The rest of the code is basically the same as in Basic1/InitGui.py as explained 
 ### Basic3Gui.py
 
 [Basic3Gui.py](basic3_wb/Basic3Gui.py) defines the 3 commands of our workbench:
-1. Basic3_MakeBox:
-1. Basic3_MakeBoxDialog:
-1. Basic3_MakeBoxEdgeP:
+1. Basic3_MakeBox
+1. Basic3_MakeBoxDialog
+1. Basic3_MakeBoxEdgeP
 
-Basic3_MakeBox and Basic3_MakeBoxDialgo are the same as in Basic2, so we will skip that. We included it to have a workbench with 3 commands.
+Basic3_MakeBox and Basic3_MakeBoxDialog are the same as in Basic2, so we will skip the explanation. We included them to have a workbench with 3 commands.
 
 ![workbench toolbar](imgs/wb3_toolbar.png)
 
@@ -152,9 +150,9 @@ FreeCADGui.addCommand('Basic3_MakeBoxEdgeP', _MakeBoxEdgeP())
 
 The class **_MakeBoxEdgeP** is very similar to the previous [tutorial](./tut_fwb_2.md)
 
-The main difference is in **BoxEdgePTaskPanel**
+The main difference is in the class **BoxEdgePTaskPanel**. This class creates the task panel.
 
-Now, we add the Label and the Spin Box. To add them, first we include a **QHBoxLayout** to line the label and the Spin Box horizontally:
+Compared to the task panel of the previous tutorial, now we add a Label and a Spin Box. To add them, first we include a **QHBoxLayout** to line the label and the Spin Box horizontally:
 
 ```python
         layout = QtGui.QHBoxLayout()
@@ -166,7 +164,7 @@ Then we add the label:
         self.edgeLabel = QtGui.QLabel("Cube's edge length (mm)")
 ```
 
-Next, the spin box, where we also set the default value, and a suffix for the units
+Next, the spin box, where we also set the default value, and a suffix for the units (milimetres)
 
 ```python
         self.edgeValue = QtGui.QDoubleSpinBox()
@@ -197,7 +195,7 @@ If the **Ok** button is clicked, we have to get the value introduced in the spin
 
 ---
 
-Last, the function **MakeBox** has been modified to accept arguments:
+Take into account that we need to modify the function **MakeBox** to accept arguments:
 
 
 ```python
@@ -213,5 +211,5 @@ So if we click on the MakeBoxEdgeP Command we will get the following Task Panel 
 
 ![Simple Task Panel Dialog selection](imgs/wb3_dialog.png)
 
-We can set the edge length, and the click in **Ok** to get a new cube.
+We can set the length of the edges, and clicking on **Ok** we will get a new cube with the chosen dimension.
 
