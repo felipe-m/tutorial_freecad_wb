@@ -213,3 +213,7 @@ So if we click on the MakeBoxEdgeP Command we will get the following Task Panel 
 
 We can set the length of the edges, and clicking on **Ok** we will get a new cube with the chosen dimension.
 
+------
+
+Check [tutorial 4](./tut_fwb_4.md) to see an example where 3 parameters are set.
+
